@@ -23,6 +23,7 @@
 > empire_strikes <- c(290.475, 247.900)
 > return_jedi <- c(309.306, 165.8)
 > box_office <- c(new_hope, empire_strikes, return_jedi)
+
 > # Transformar as vendas de bilheteria do StarWars (Vendas EUA, Vendas NãoEUA) em uma matriz
 > box_office <- c(new_hope, empire_strikes, return_jedi)
 > box_office
@@ -33,3 +34,151 @@
 [1,] 460.998 314.4
 [2,] 290.475 247.9
 [3,] 309.306 165.8
+
+# Assim como nos vetores, nós podemos nomear as fileiras e as colunas das matrizes
+> # Nesse exemplo vamos dividir em Regiões e Títulos
+> region <- c("US","non-US")
+> titles <- c("A New Hope", "The Empire Strikes Back", "Return of the Jedi")
+
+> # Nomeando as coluna com as Regiões
+> colnames(star_wars_matrix) <- region
+
+> # Nomeando as linhas
+> row.names(star_wars_matrix) <- titles
+> star_wars_matrix
+                             US non-US
+A New Hope              460.998  314.4
+The Empire Strikes Back 290.475  247.9
+Return of the Jedi      309.306  165.8
+
+> # Calculando o total de vendas de cada filme - Soma das fileiras - rowSums()
+> worldwide_vector <- rowSums(star_wars_matrix)
+> worldwide_vector
+             A New Hope The Empire Strikes Back      Return of the Jedi 
+                775.398                 538.375                 475.106
+
+> # Adicionando colunas a uma matriz - cbind() que adiciona matrizes e/ou vetores por coluna
+> # Adicionando esse ultimo vetor com as vendas de bilheteria mundial a matriz
+> all_wars_matrix <- cbind(star_wars_matrix, worldwide_vector)
+> all_wars_matrix
+                             US non-US worldwide_vector
+A New Hope              460.998  314.4          775.398
+The Empire Strikes Back 290.475  247.9          538.375
+Return of the Jedi      309.306  165.8          475.106
+
+# Para mesclar filheiras temos o rbind()
+> # Usando uma matriz com os outros filmes
+> titles2 <- c("The Phantom Menace","Attack of the Clones","Revenge of the Sith")
+> region2 <- c("US","non-US")
+> The_Phantom_Menace <- c(474.5,552.5)
+> Attack_of_the_Clones <- c(310.7,338.7)
+> Revenge_of_the_Sith <- c(380.3, 468.5)
+> box_office2 <- c(The_Phantom_Menace,Attack_of_the_Clones,Revenge_of_the_Sith)
+> star_wars_matrix2 <- matrix(box_office2, byrow = TRUE, nrow = 3)
+> star_wars_matrix2
+      [,1]  [,2]
+[1,] 474.5 552.5
+[2,] 310.7 338.7
+[3,] 380.3 468.5
+> colnames(star_wars_matrix2)<- region2
+> row.names(star_wars_matrix2) <- titles2
+> star_wars_matrix2
+                        US non-US
+The Phantom Menace   474.5  552.5
+Attack of the Clones 310.7  338.7
+Revenge of the Sith  380.3  468.5
+> # Juntando as 2 matrizes 
+> all_wars_matrix <- rbind(star_wars_matrix, star_wars_matrix2)
+> all_wars_matrix
+                             US non-US
+A New Hope              460.998  314.4
+The Empire Strikes Back 290.475  247.9
+Return of the Jedi      309.306  165.8
+The Phantom Menace      474.500  552.5
+Attack of the Clones    310.700  338.7
+Revenge of the Sith     380.300  468.5
+
+> # Temos o colSums() que soma as colunas das matrizes 
+> total_revenue_vector <- colSums(all_wars_matrix)
+> total_revenue_vector
+      US   non-US 
+2226.279 2087.800
+
+> # Pegando elementos específicos de uma matriz
+> all_wars_matrix[1,2]
+[1] 314.4
+> # Uma coluna inteira
+> all_wars_matrix[,2]
+             A New Hope The Empire Strikes Back      Return of the Jedi 
+                  314.4                   247.9                   165.8 
+     The Phantom Menace    Attack of the Clones     Revenge of the Sith 
+                  552.5                   338.7                   468.5 
+> all_wars_matrix[,1]
+             A New Hope The Empire Strikes Back      Return of the Jedi 
+                460.998                 290.475                 309.306 
+     The Phantom Menace    Attack of the Clones     Revenge of the Sith 
+                474.500                 310.700                 380.300 
+> all_wars_matrix[1,]
+     US  non-US 
+460.998 314.400 
+
+> # Exercício - Calcular a média de todos os filmes "non-US" 
+> non_us_all <- all_wars_matrix[,2]
+> mean(non_us_all)
+[1] 347.9667
+> # Exercício - Calcular a média dos 2 primeiros filmes "non-US" 
+> non_us_some <- all_wars_matrix[1:2,2]
+> mean(non_us_some)
+[1] 281.15
+
+> # Podemos utilizar operações com matrizes
+> # Supondo que o preço do ingresso para os filmes seja US$ 5, podemos calcular o numero de visitantes
+> visitors <- all_wars_matrix/5
+> visitors
+                             US non-US
+A New Hope              92.1996  62.88
+The Empire Strikes Back 58.0950  49.58
+Return of the Jedi      61.8612  33.16
+The Phantom Menace      94.9000 110.50
+Attack of the Clones    62.1400  67.74
+Revenge of the Sith     76.0600  93.70
+
+> # Para esse exercício precisamos da matriz de preço dos tickets
+> ticket_prices_matrix <- matrix(data = c(5,6,7,4,4.5,4.9,5,6,7,4,4.5,4.9), nrow = 6)
+> titles6 <- c(titles,titles2)
+> titles6
+[1] "A New Hope"              "The Empire Strikes Back" "Return of the Jedi"     
+[4] "The Phantom Menace"      "Attack of the Clones"    "Revenge of the Sith"    
+> region
+[1] "US"     "non-US"
+> colnames(ticket_prices_matrix) <- region
+> rownames(ticket_prices_matrix) <- titles6
+> ticket_prices_matrix
+                         US non-US
+A New Hope              5.0    5.0
+The Empire Strikes Back 6.0    6.0
+Return of the Jedi      7.0    7.0
+The Phantom Menace      4.0    4.0
+Attack of the Clones    4.5    4.5
+Revenge of the Sith     4.9    4.9
+
+> # Achando o número estimado de visitantes
+> visitors <- all_wars_matrix / ticket_prices_matrix
+> visitors
+                               US    non-US
+A New Hope               92.19960  62.88000
+The Empire Strikes Back  48.41250  41.31667
+Return of the Jedi       44.18657  23.68571
+The Phantom Menace      118.62500 138.12500
+Attack of the Clones     69.04444  75.26667
+Revenge of the Sith      77.61224  95.61224
+> # Número de visitantes dos USA
+> us_visitors <- visitors[,1]
+> us_visitors
+             A New Hope The Empire Strikes Back      Return of the Jedi 
+               92.19960                48.41250                44.18657 
+     The Phantom Menace    Attack of the Clones     Revenge of the Sith 
+              118.62500                69.04444                77.61224 
+> # Média dos visitantes dos USA
+> mean(us_visitors)
+[1] 75.01339
