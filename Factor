@@ -1,0 +1,67 @@
+> # Factors
+> 
+> # Exemplo
+> sex_vector <- c("Male","Female","Female","Male","Male")
+> # Só temos 2 categorias, ou 2 'factor levels' para o R
+> # Usamos o factor() para o R ver como um factor
+> factor_sex_vector <- factor(sex_vector)
+> factor_sex_vector
+[1] Male   Female Female Male   Male  
+Levels: Female Male
+
+> # Alguns factor possuem ordem como temperatura(alta,média,baixa) e outros não (gato,cachorro)
+> # Podemos fazer o R entender isso
+> # Animais
+> animals_vector <- c("Elephant", "Giraffe", "Donkey", "Horse")
+> factor_animals_vector <- factor(animals_vector)
+> factor_animals_vector
+[1] Elephant Giraffe  Donkey   Horse   
+Levels: Donkey Elephant Giraffe Horse
+> 
+> # Temperatura
+> temperature_vector <- c("High", "Low", "High","Low", "Medium")
+> factor_temperature_vector <- factor(temperature_vector, order = TRUE, levels = c("Low", "Medium", "High"))
+> factor_temperature_vector
+[1] High   Low    High   Low    Medium
+Levels: Low < Medium < High
+> # order - segue do menor para o maior
+
+> # Ajeitando os fatores para o que queremos
+> # Nesse caso mudar de "M" -> "MALE" e "F" -> "FEMALE"
+> survey_vector <- c("M", "F", "F", "M", "M")
+> factor_survey_vector <- factor(survey_vector)
+> factor_survey_vector
+[1] M F F M M
+Levels: F M
+> levels(factor_survey_vector) <- c("Female", "Male")
+> factor_survey_vector
+[1] Male   Female Female Male   Male  
+Levels: Female Male
+
+# Função summary()
+> summary(survey_vector)
+   Length     Class      Mode 
+        5 character character 
+> summary(factor_survey_vector)
+Female   Male 
+     2      3 
+> # Criando Factors em que a ordem importa
+> # Ex - Análise de velocidade de Analista
+> speed_vector <- c("medium","slow","slow","medium","fast")
+> # Usar os argumentos ordered e levels
+> factor_speed_vector <- factor(speed_vector,ordered = TRUE,levels = c("slow","medium", "fast"))
+> factor_speed_vector
+[1] medium slow   slow   medium fast  
+Levels: slow < medium < fast
+> summary(factor_speed_vector)
+  slow medium   fast 
+     2      2      1 
+
+> # Comparando os Factors definidos
+> # O valor de Factor do Analista 2
+> da2 <- factor_speed_vector[2]
+> # O valor de Factor do Analista 5
+> da5 <- factor_speed_vector[5]
+> # Analista 2 é mais rápido que o 5?
+> da2 > da5
+[1] FALSE
