@@ -1,0 +1,101 @@
+# Aprendendo R
+> #Exercícios Vetor
+> # Poker winnings from Monday to Friday
+> poker_vector <- c(140, -50, 20, -120, 240)
+> 
+> # Roulette winnings from Monday to Friday
+> roulette_vector <- c(-24, -50, 100, -350, 10)
+> 
+> # Assign days as names of poker_vector
+> names(poker_vector) <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+> 
+> # Assign days as names of roulette_vector
+> names(roulette_vector) <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+> # Como isso da mt trabalho, podemos usar uma variável para guardar os dias da semana
+> days_vector -> c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+Erro: objeto 'days_vector' não encontrado
+> days_vector <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+> poker_vector
+   Monday   Tuesday Wednesday  Thursday    Friday 
+      140       -50        20      -120       240 
+> names(poker_vector) <- days_vector
+> names(roulette_vector) <- days_vector
+> poker_vector
+   Monday   Tuesday Wednesday  Thursday    Friday 
+      140       -50        20      -120       240 
+> 
+> 
+> # R soma vetores por posição a(1,2,3) + b(3,4,5) = c(1+3,2+4,3+5) = c(4,6,8)
+> # podemos tambem dar vaiaveis aos vetores somar as variaveis a<-c(1,2,3) b<- c(3,4,5) a+b
+> A_vector <- c(1, 2, 3)
+> B_vector <- c(4, 5, 6)
+> 
+> # Take the sum of A_vector and B_vector
+> total_vector <- A_vector +B_vector
+> 
+> # Print out total_vector
+> total_vector
+[1] 5 7 9
+> total_daily <- poker_vector+ roulette_vector
+> #total daily é o total de cada dia 
+> # Formula SUM, soma todos os elementos de um vetor
+> total_poker <- sum(poker_vector)
+> total_roulette <- sum(roulette_vector)
+> total_week <- total_poker+ total_roulette
+> total_week
+[1] -84
+> # Só o operador >
+> total_poker > total_roulette
+[1] TRUE
+> # Selecionando elementos de um vetor
+> # O Primeiro elemento é o 1 -> v[1]
+> # Pegando o resultado de poker da Quarta 
+> poker_wednesday <- poker_vector[3]
+> # Podemos selecionar vários elementos de um vetor
+> # Selecionando os vetores de Terça,Quarta e Quinta
+> poker_midweek <- poker_vector[c(2,3,4)]
+> poker_midweek
+  Tuesday Wednesday  Thursday 
+      -50        20      -120 
+> # usa virgula para selecionar específicos e : para um intervalo
+> # poker_vextor[2:4]
+> # Resultados da Roleta de Terça a Sexta
+> roulette_selection_vector <- roulette_vector[2:5]
+> roulette_selection_vector
+  Tuesday Wednesday  Thursday    Friday 
+      -50       100      -350        10 
+      # Outro jeito de resolver esse problema é pelo nome de cada elemento do vetor
+> #Vetor de Segunda
+> poker_vector["Monday"]
+Monday 
+   140 
+> # Resultados de Segunda, TGerça e Quarta
+> poker_start <- poker_vector[c("Monday","Tuesday","Wednesday")]
+> # Calculando a Média desse vetpr
+> mean(poker_start)
+[1] 36.66667
+> # < for less than
+> # > for greater than
+> # <= for less than or equal to
+> # >= for greater than or equal to
+> # == for equal to each other
+> # != not equal to each other
+> # Os resultado TRUE - FLASE, tambem podem ser usados em vetores
+> c(4,5,6) > 5
+[1] FALSE FALSE  TRUE
+# Descobrindo que valores do poker são positivos
+> selection_vector <- poker_vector > 0
+> selection_vector
+   Monday   Tuesday Wednesday  Thursday    Friday 
+     TRUE     FALSE      TRUE     FALSE      TRUE 
+> # Só retornamos os dias em tivemos retornos positivos, agora vamos saver não apenas os dias, como tambem os valores
+> poker_vector[selection_vector]
+   Monday Wednesday    Friday 
+      140        20       240 
+> # Só retorna os valores TRUE, relaciona os TRUE com as posições do vertor
+> # Fazendo o mesmo para roleta
+> selection_vector <- roulette_vector >0
+> roulette_winning_days <- roulette_vector[selection_vector]
+> roulette_winning_days
+Wednesday    Friday 
+      100        10 
