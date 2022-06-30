@@ -1,0 +1,35 @@
+# Criamos matrizes usando  matrix()
+> # matrix(1:9, byrow = TRUE, nrow = 3)
+> matrix(1:9, byrow = TRUE, nrow = 3)
+     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    4    5    6
+[3,]    7    8    9
+> # 1:9 diz os numeros dentro da matriz, byrow = TRUE diz que a matrx é preenchida pelas linhas, se fosse preenchida pelas colunas FALSE, nrow = numero de colunas
+> matrix(1:9, nrow = 3)
+     [,1] [,2] [,3]
+[1,]    1    4    7
+[2,]    2    5    8
+[3,]    3    6    9
+> matrix(1:9, byrow = FALSE, nrow = 3)
+     [,1] [,2] [,3]
+[1,]    1    4    7
+[2,]    2    5    8
+[3,]    3    6    9
+
+# Exercício
+> # Box office Star Wars (in millions!)
+> new_hope <- c(460.998, 314.4)
+> empire_strikes <- c(290.475, 247.900)
+> return_jedi <- c(309.306, 165.8)
+> box_office <- c(new_hope, empire_strikes, return_jedi)
+> # Transformar as vendas de bilheteria do StarWars (Vendas EUA, Vendas NãoEUA) em uma matriz
+> box_office <- c(new_hope, empire_strikes, return_jedi)
+> box_office
+[1] 460.998 314.400 290.475 247.900 309.306 165.800
+> star_wars_matrix <- matrix(box_office, byrow = TRUE, nrow = 3)
+> star_wars_matrix
+        [,1]  [,2]
+[1,] 460.998 314.4
+[2,] 290.475 247.9
+[3,] 309.306 165.8
