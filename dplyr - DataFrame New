@@ -5,3 +5,70 @@ df %>%
   head()
   pipes the data frame df into the first argument of head(), becoming
   head(df)
+# Ex
+artists %>%
+  head()
+
+O pipe tira a necessidade de informar qual o arquivo em todas as situações
+--------------------------------------------------------------------------------------------------
+
+# Select()
+
+Seleciona a/as colunas quer quer
+# Ex - para uma arquivo df com colunas a, b, c
+select(df, a, b)
+
+# Usando o Pipe
+df %>%
+  select(a,b)
+  
+  ------------------------------------------------------------------------------------------------
+> # Removendo colunas
+> # Dizendo que não queremos a coluna rotation
+> my_df %>%
++ select(-rotation) -> new_my_df
+> new_my_df
+     name               type diameter rings
+1 Mercury Terrestrial planet    0.382 FALSE
+2   Venus Terrestrial planet    0.949 FALSE
+3   Earth Terrestrial planet    1.000 FALSE
+4    Mars Terrestrial planet    0.532 FALSE
+5 Jupiter          Gas giant   11.209  TRUE
+6  Saturn          Gas giant    9.449  TRUE
+7  Uranus          Gas giant    4.007  TRUE
+8 Neptune          Gas giant    3.883  TRUE
+------------------------------------------------------------------------------------------------
+
+# Filtros - filter()
+# Pode funcionar para 1 filtro
+orders %>%
+  filter(first_name == 'Joyce')
+# 2 ou mais filtros - a virgula é como um &
+orders %>%
+  filter(shoe_material == 'faux-leather',price > 25)
+# Retorna um df, com esses filtros
+
+# Syntax
+rock_groups <- artists %>%
+  filter(genre =='Rock')  
+rock_groups
+
+# Filtro com OR - |
+orders %>%
+  filter(shoe_type == 'clogs' | price < 20)
+
+# Filtro excluindo - !
+orders %>%
+  filter(!(shoe_color == red))
+# Sapatos diferentes de red
+------------------------------------------------------------------------------------------------
+
+# Organizando o DF
+# Usando a função arrange()
+# Organizando pelo nome ascendente
+customers %>%
+  arrange(name)
+# Organizando pelo nome descendente
+customers %>%
+  arrange(desc(age))
+
