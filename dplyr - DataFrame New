@@ -1,3 +1,13 @@
+# Deixando o código mais limpo e simples com PIPE
+artists <- artists %>%
+  select(-country,-year_founded,-albums)
+  artists %>%
+  filter(spotify_monthly_listeners > 20000000, genre != 'Hip Hop')
+  artists %>%
+  arrange(desc(youtube_subscribers))
+head(artists)
+--------------------------------------------------------------------------------------------------
+
 # Piping
 
 The pipe operator, or %>%, helps increase the readability of data frame code by piping the value on its left into the first argument of the function that follows it.
