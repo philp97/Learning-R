@@ -1,0 +1,7 @@
+# Piping
+
+The pipe operator, or %>%, helps increase the readability of data frame code by piping the value on its left into the first argument of the function that follows it.
+df %>%
+  head()
+  pipes the data frame df into the first argument of head(), becoming
+  head(df)
