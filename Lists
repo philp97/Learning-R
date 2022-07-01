@@ -1,0 +1,80 @@
+# Listas são "super dados" que podem armazenar qualquer coisa dentro
+
+> # Criando uma lista
+> my_vector <- 1:10
+> my_matrix <- matrix(1:9, ncol = 3)
+> my_df <- planets_df[1:8,]
+> my_list <- list(my_vector, my_matrix, my_df)
+> my_list
+[[1]]
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+[[2]]
+     [,1] [,2] [,3]
+[1,]    1    4    7
+[2,]    2    5    8
+[3,]    3    6    9
+
+[[3]]
+     name               type diameter rotation rings
+1 Mercury Terrestrial planet    0.382    58.64 FALSE
+2   Venus Terrestrial planet    0.949  -243.02 FALSE
+3   Earth Terrestrial planet    1.000     1.00 FALSE
+4    Mars Terrestrial planet    0.532     1.03 FALSE
+5 Jupiter          Gas giant   11.209     0.41  TRUE
+6  Saturn          Gas giant    9.449     0.43  TRUE
+7  Uranus          Gas giant    4.007    -0.72  TRUE
+8 Neptune          Gas giant    3.883     0.67  TRUE
+
+> # Podemos dar nomes especiais quando formos inserir dados numa lista para facilitar
+> my_list <- list(vec = my_vector, mat = my_matrix, df = my_df)
+> my_list
+$vec
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+$mat
+     [,1] [,2] [,3]
+[1,]    1    4    7
+[2,]    2    5    8
+[3,]    3    6    9
+
+$df
+     name               type diameter rotation rings
+1 Mercury Terrestrial planet    0.382    58.64 FALSE
+2   Venus Terrestrial planet    0.949  -243.02 FALSE
+3   Earth Terrestrial planet    1.000     1.00 FALSE
+4    Mars Terrestrial planet    0.532     1.03 FALSE
+5 Jupiter          Gas giant   11.209     0.41  TRUE
+6  Saturn          Gas giant    9.449     0.43  TRUE
+7  Uranus          Gas giant    4.007    -0.72  TRUE
+8 Neptune          Gas giant    3.883     0.67  TRUE
+
+> # Puxando dados da lista
+> my_list$df
+     name               type diameter rotation rings
+1 Mercury Terrestrial planet    0.382    58.64 FALSE
+2   Venus Terrestrial planet    0.949  -243.02 FALSE
+3   Earth Terrestrial planet    1.000     1.00 FALSE
+4    Mars Terrestrial planet    0.532     1.03 FALSE
+5 Jupiter          Gas giant   11.209     0.41  TRUE
+6  Saturn          Gas giant    9.449     0.43  TRUE
+7  Uranus          Gas giant    4.007    -0.72  TRUE
+8 Neptune          Gas giant    3.883     0.67  TRUE
+> # Puxando um elemento específico
+> my_list$df[3]
+  diameter
+1    0.382
+2    0.949
+3    1.000
+4    0.532
+5   11.209
+6    9.449
+7    4.007
+8    3.883
+> my_list$mat[1,1]
+[1] 1
+> my_list$mat[1,]
+[1] 1 4 7
+> my_list$mat[,1]
+[1] 1 2 3
+
