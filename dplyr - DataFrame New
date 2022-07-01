@@ -1,9 +1,9 @@
 # Deixando o código mais limpo e simples com PIPE
 artists <- artists %>%
   select(-country,-year_founded,-albums)
-  artists %>%
+artists <- artists %>%
   filter(spotify_monthly_listeners > 20000000, genre != 'Hip Hop')
-  artists %>%
+artists <- artists %>%
   arrange(desc(youtube_subscribers))
 head(artists)
 --------------------------------------------------------------------------------------------------
