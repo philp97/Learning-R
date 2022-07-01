@@ -1,0 +1,94 @@
+ # Operadores no R
+ 
+ # == -> Igual
+ # != -> Diferente
+ # TRUE = 1 e FALSE = 0, então TRUE > FALSE == TRUE
+ # >= -> Maior ou igual
+ # <= -> Menor ou igual
+
+> # Comparison of logicals
+> TRUE == FALSE
+[1] FALSE
+> 
+> # Comparison of numerics
+> -6 * 14 != 17 - 101
+[1] FALSE
+> 
+> # Comparison of character strings
+> "useR" == "user"
+[1] FALSE
+> 
+> # Compare a logical with a numeric
+> TRUE == 1
+[1] TRUE
+
+# Tambem funciona com vetores
+
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+facebook <- c(17, 7, 5, 16, 8, 13, 14)
+
+> # Popular days
+> linkedin > 15
+[1]  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE
+> 
+> # Quiet days
+> linkedin <= 5
+[1] FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE
+> 
+> # LinkedIn more popular than Facebook
+> linkedin > facebook
+[1] FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE
+
+> linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+> facebook <- c(17, 7, 5, 16, 8, 13, 14)
+> views <- matrix(c(linkedin, facebook), nrow = 2, byrow = TRUE)
+> dias_da_semana <- c("Segunda", "Terça", "Quarta","Quinta","Sexta", "Sabado", "Domingo")
+> colnames(views) = dias_da_semana
+> rownames(views) <- c("linkedin","facebook")
+> views
+         Segunda Terça Quarta Quinta Sexta Sabado Domingo
+linkedin      16     9     13      5     2     17      14
+facebook      17     7      5     16     8     13      14
+
+> # Usando operadores com Matrix
+> views == 13
+         Segunda Terça Quarta Quinta Sexta Sabado Domingo
+linkedin   FALSE FALSE   TRUE  FALSE FALSE  FALSE   FALSE
+facebook   FALSE FALSE  FALSE  FALSE FALSE   TRUE   FALSE
+> views <= 14
+         Segunda Terça Quarta Quinta Sexta Sabado Domingo
+linkedin   FALSE  TRUE   TRUE   TRUE  TRUE  FALSE    TRUE
+facebook   FALSE  TRUE   TRUE  FALSE  TRUE   TRUE    TRUE
+
+-----------------------------------------------------------------------------------------------------
+
+# & e | - and e or
+
+> linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+> last <- tail(linkedin, 1)
+> 
+> # Is last under 5 or above 10?
+> last <5 | last>10
+[1] TRUE
+> 
+> # Is last between 15 (exclusive) and 20 (inclusive)?
+> last>15 & last<= 20
+[1] FALSE
+
+> # Com Vetores e Matrizes
+
+> linkedin > 10 & facebook <10
+[1] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
+> 
+> # When were one or both visited at least 12 times?
+> linkedin >=12 | facebook >=12
+[1]  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE
+> 
+> # When is views between 11 (exclusive) and 14 (inclusive)?
+> views > 11 & views <= 14
+         Segunda Terça Quarta Quinta Sexta Sabado Domingo
+linkedin   FALSE FALSE   TRUE  FALSE FALSE  FALSE    TRUE
+facebook   FALSE FALSE  FALSE  FALSE FALSE   TRUE    TRUE
+
+> # Como TRUE == 1, podemos fazer a soma de todos que são verdadeiros com sum()
+
