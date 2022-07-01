@@ -81,4 +81,28 @@ customers %>%
 # Organizando pelo nome descendente
 customers %>%
   arrange(desc(age))
+------------------------------------------------------------------------------------------------
 
+# Adiocionando uma coluna com base me outra MUTATE()
+df %>%
+  mutate(sales_tax = price * 0.075)
+
+# Adicionando mais de 1 coluna
+df %>%
+  mutate(profit = price - cost_to_manufacture,
+         in_stock = TRUE)
+         
+# Quando não queremos manter as colunas anteriores usamos o transmute()
+# Para 2 colunas
+df %>%
+  transmute(sales_tax = price * 0.075,
+            profit = price - cost_to_manufacture)
+------------------------------------------------------------------------------------------------
+ 
+# Renomeando colunas
+
+df %>%
+  rename(Nome_que_eu_quero = Nome_original,
+         author = written_by)
+         
+         
