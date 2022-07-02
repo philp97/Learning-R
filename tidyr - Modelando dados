@@ -1,0 +1,32 @@
+Usa para reorganizar os dados
+função gather()
+
+df %>%
+  gather('Checking','Savings',key='Account Type',value='Amount')
+
+Original
+Account	Checking	Savings
+“12456543”	8500	8900
+“12283942”	6410	8020
+“12839485”	78000	92000
+
+Modificada
+Account	Account Type	Amount
+“12456543”	“Checking”	8500
+“12456543”	“Savings”	8900
+“12283942”	“Checking”	6410
+
+df: the data frame you want to gather, which can be piped into gather()
+Checking and Savings: the columns of the old data frame that you want to turn into variables
+key: what to call the column of the new data frame that stores the variables
+value: what to call the column of the new data frame that stores the values
+------------------------------------------------------------------------------------------------
+
+Função count() - conta o numero de entradas diferents na coluna
+count(df,coluna)
+------------------------------------------------------------------------------------------------
+duplicated() - Mostra as linhas repetidas
+fruits %>% duplicated() - retorna um vetor lógico, true = repetido
+
+distinct() - Mostra as linhas distintas
+fruits %>% distinct() - retorna a df com as linhas distintas
