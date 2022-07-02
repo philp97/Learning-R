@@ -1,0 +1,47 @@
+library(ggplot2)
+
+viz <- ggplot(data=df)
+
+aes() -> define os eixos x,y
+viz <- ggplot(data=df, aes(x = coluna, y = coluna)
+
++ -> usa para adicionar camadas
+
+geom -> tipo de linha,ponto
+viz <- ggplot(data=df, aes(x = coluna, y = coluna) + geom_point()
+
+geom_smooth() - camada que smooth, vem com uma banda de erro em cinza
+
+# Color - com qual informação colorir o gráfico
+
+# Faz automático
+viz <- ggplot(data=airquality, aes(x=Ozone, y=Temp)) +
+       geom_point(color= coluna)
+       
+# Fazendo entradas manuais e escolhendo a cor
+viz <- ggplot(data=airquality, aes(x=Ozone, y=Temp)) +
+       geom_point(color="darkred")         
+   
+ggplot(data=movies, aes(x=imdbRating, y=nrOfWins)) +
+       geom_point(aes(color=nrOfGenre), alpha = .5)
+       
+-----------------------------------------------------------------------------------------
+# Criando Nomes, Titulos
+
+Função labs() -> ver documentação
+
+ggplot(df, aes(x=rent, y=size_sqft)) + 
+       geom_point() +
+       labs(title="Monthly Rent vs Apartment Size in Brooklyn, NY", subtitle="Data by StreetEasy (2017)", x="Monthly Rent ($)", y="Apartment Size (sq ft.)")
+
+viz + labs(title="New Title", subtitle="New subtitle", y="Y label value", x="X label value", color = "New legend label")
+-----------------------------------------------------------------------------------------
+# Gráfico de barras
+
+bar <- ggplot(books, aes(x=Language)) + geom_bar()
+bar
+ggsave("bar-example.png")
+
+
+
+
