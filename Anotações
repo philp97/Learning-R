@@ -1,6 +1,15 @@
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+
 Número de linhas -> nrow()
 Número de colunas -> ncol()
 Nome colunas -> colnames(dado)
 Nome linhas -> row.names(dado) ------ row.names(df) <- c("M", "F")
 Selecionando colunas -> select(df,coluna) ou df %>% select(coluna)
 Apagando colunas -> select(df,-coluna) ou df %>% select(-coluna)
+Separando por index - str_sub(df,1,2)) - 1 = primeiro index 2 = segundo index
+Separando por caracteres - separate(colunapraseparar,c('novacol1','novacol2'),'_') -> no fim, o separador '_'
+Vendo tipos de dados das colunas - str(df)
+Removendo 1 caracter de um dado -> coluna <- gsub("caracter","",coluna)
+Mudando dado para número -> as.numeric()
