@@ -104,5 +104,39 @@ df %>%
 df %>%
   rename(Nome_que_eu_quero = Nome_original,
          author = written_by)
-         
-         
+------------------------------------------------------------------------------------------------
+
+# Dividindo um dado - str_sub()
+# Ex - data = MMDDAAAA -> 11011993 - Podemos dividir para ano mês dia
+# Criando uma coluna com os dados separados
+# Create the 'month' column - começa no index 1 e termina no 2
+df %>%
+  mutate(month = str_sub(birthday,1,2))
+ 
+# Create the 'day' column
+df %>%
+  mutate(day = str_sub(birthday,3,4))
+ 
+# Create the 'year' column
+df %>%
+  mutate(year = str_sub(birthday,5))
+
+ # Dividindo por caracteres        
+# Create the 'user_type' and 'country' columns
+df %>%
+  separate(colunapraseparar,c('novacol1','novacol2'),'_') -> no fim, o separador '_'
+
+# Remover caracteres
+students <- students %>%
+  mutate(score=gsub('%','',score))
+students
+
+# Mudando dado para numerico
+students <- students %>%
+  mutate(score=as.numeric(score))
+students
+
+
+ 
+ 
+ 
