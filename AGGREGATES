@@ -1,0 +1,51 @@
+
+
+# Syntax geral
+
+df %>%
+  summarize(var_name = command(column_name))
+
+Se tiver algum dado faltando na coluna, irá dar erro =, corrigindo com na.rm = TRUE, dentro do comando da conta
+Ex: summarize(most_expensive = max(price, na.rm = TRUE))
+
+# Achando a mediana de df
+
+customers %>%
+  select(age)
+# c(23, 25, 31, 35, 35, 46, 62)
+customers %>%
+  summarize(median_age = median(age))
+# 35
+
+# Acahando as entradas distintas
+
+shipments %>%
+  select(states)
+# c('CA', 'CA', 'CA', 'CA', 'NY', 'NY', 'NJ', 'NJ', 'NJ', 'NJ', 'NJ', 'NJ', 'NJ')
+shipments %>%
+  summarize(n_distinct_states = n_distinct(states))
+# 3
+
+# Achando o desvio padrão
+
+inventory %>%
+  select(price)
+# c(31, 23, 30, 27, 30, 22, 27, 22, 39, 27, 36)    
+inventory %>% 
+  summarize(sd_price = sd(price))
+# 5.465595
+-----------------------------------------------------------------------------------------------
+# Group by
+
+Syntax
+df %>%
+  group_by(column_1) %>%
+  summarize(aggregate_name = command(column_2))
+  
+  
+  
+  
+  
+  
+  
+  
