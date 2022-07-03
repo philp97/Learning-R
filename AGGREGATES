@@ -59,7 +59,10 @@ most_pop_orders<- orders %>%
  group_by(shoe_type) %>%
  filter(n()>16)
  
- 
+ # Cria uma nova coluna com o critérios que queremos
+ diff_from_mean <- orders %>%
+  group_by(shoe_type) %>%
+  mutate(diff_from_shoe_type_mean = price - mean(price, na.rm = TRUE))
   
   
   
