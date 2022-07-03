@@ -48,8 +48,18 @@ df %>%
   group_by(student) %>%
   summarize(count = n())
   
-  
-  
+  # Ex
+  shoes_sold <- orders %>%
+  group_by(shoe_type) %>%
+  summarize(count = n())
+shoes_sold
+ 
+ # Mostra o número de shoe_type que aparecem mais de 16 vezes
+most_pop_orders<- orders %>%
+ group_by(shoe_type) %>%
+ filter(n()>16)
+ 
+ 
   
   
   
