@@ -41,6 +41,12 @@ Syntax
 df %>%
   group_by(column_1) %>%
   summarize(aggregate_name = command(column_2))
+  -----------------------------------------------------------------------------------------------
+  # Contando as linhas
+  
+  grades <- df %>%
+  group_by(student) %>%
+  summarize(count = n())
   
   
   
