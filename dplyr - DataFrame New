@@ -136,7 +136,33 @@ students <- students %>%
   mutate(score=as.numeric(score))
 students
 
-
+# Valores NA - na.rm = TRUE
+pricey_shoes <- orders %>%
+  group_by(shoe_type) %>%
+  summarize(max_price = max(price, na.rm=TRUE))
  
+# Contando o número de linhas -> 
+ano_2016 %>%
++ summarise(count = n()) 
+
+shoes_sold <- orders %>%
+  group_by(shoe_type) %>%
+  summarize(count = n())
+
+# Mostra o número de shoe_type que aparecem mais de 16 vezes
+most_pop_orders<- orders %>%
+ group_by(shoe_type) %>%
+ filter(n()>16)
+ 
+ 
+
+
+
+
+
+
+
+
+
  
  
