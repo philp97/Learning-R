@@ -1,0 +1,9 @@
+# Aqui eu tava querendo criar varias variáveis automaticamente
+# Here I wanted to create variables in an automatic way
+
+for(i in 2016:2020) { 
+  nam <- paste("homen_", i, sep = "")
+  assign(nam, dados_orto_filtrados %>%
+           filter(sexo == 1, Ano == i) %>%
+           nrow())
+   }
