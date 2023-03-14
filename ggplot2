@@ -1,3 +1,4 @@
+str - view dataset
 library(ggplot2)
 
 viz <- ggplot(data=df)
@@ -42,6 +43,13 @@ bar <- ggplot(books, aes(x=Language)) + geom_bar()
 bar
 ggsave("bar-example.png")
 
+FACTOR - Reduces space between observations
+ggplot(mtcars, aes(factor(cyl), mpg)) +
+  geom_point()
 
-
+DISP - Different size or color( degrade)
+ggplot(mtcars, aes(wt, mpg, size = disp)) +
+  geom_point()
+ggplot(mtcars, aes(wt, mpg, color = disp)) +
+  geom_point()  
 
