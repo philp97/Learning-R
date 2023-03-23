@@ -56,7 +56,7 @@ ggplot(mtcars, aes(wt, mpg, color = disp)) +
 ggplot(mtcars, aes(fcyl, fill = fam)) +
   geom_bar() +
   scale_fill_brewer(palette = "Set1")
-  
+-------------------------------------------------------------------------------------------------------------------------------------------------------  
 # Plot the Rainbow Salmon time series
 ggplot(fish.species, aes(x = Year, y = Rainbow)) +
   geom_line()
@@ -72,11 +72,33 @@ ggplot(fish.tidy, aes(Year, Capture)) +
 # Plot multiple time-series by coloring by species
 ggplot(fish.tidy, aes(x = Year, y =Capture, color = Species)) +
   geom_line(aes(group = Species))  
-  
-  
-  
-  
-  
+-------------------------------------------------------------------------------------------------------------------------------------------------------  
+Moving the legend
+Let's wrap up this course by making a publication-ready plot communicating a clear message.
+
+To change stylistic elements of a plot, call theme() and set plot properties to a new value. For example, the following changes the legend position.
+
+p + theme(legend.position = new_value)
+Here, the new value can be
+
+"top", "bottom", "left", or "right'": place it at that side of the plot.
+"none": don't draw it.
+c(x, y): c(0, 0) means the bottom-left and c(1, 1) means the top-right.
+Let's revisit the recession period line plot (assigned to plt_prop_unemployed_over_time)  
+-------------------------------------------------------------------------------------------------------------------------------------------------------  
+Modifying theme elements
+Many plot elements have multiple properties that can be set. For example, line elements in the plot such as axes and gridlines have a color, a thickness (size), and a line type (solid line, dashed, or dotted). To set the style of a line, you use element_line(). For example, to make the axis lines into red, dashed lines, you would use the following.
+
+p + theme(axis.line = element_line(color = "red", linetype = "dashed"))
+Similarly, element_rect() changes rectangles and element_text() changes text. You can remove a plot element using element_blank().
+
+plt_prop_unemployed_over_time +
+  theme(
+    # For all rectangles, set the fill color to grey92
+    rect = element_rect(fill = "grey92"),
+    # For the legend key, turn off the outline
+    legend.key = element_rect(color = NA) 
+  )  
   
   
   
